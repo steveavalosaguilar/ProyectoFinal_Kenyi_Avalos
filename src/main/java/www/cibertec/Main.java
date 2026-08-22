@@ -4,53 +4,41 @@ import javax.swing.JOptionPane;
 
 public class Main {
 
-    // Metodo calcular edad
+    // Metodos
     public static int calcularEdad(int anio) {
         return 2026 - anio;
     }
 
-    // Metodo calcular peso total
     public static double calcularPesoTotal(double peso, int cantidad) {
         return peso * cantidad;
     }
 
-    // El método main DEBE ser static
     public static void main(String[] args) {
 
-        String nombre;
-        int anio;
-        double peso;
-        boolean garantia;
-
-        nombre = JOptionPane.showInputDialog("Ingrese nombre y apellidos:");
-
-        anio = Integer.parseInt(
-                JOptionPane.showInputDialog("Ingrese año de nacimiento:"));
-
-        peso = Double.parseDouble(
-                JOptionPane.showInputDialog("Ingrese peso en kg:"));
-
-        garantia = Boolean.parseBoolean(
-                JOptionPane.showInputDialog("¿Desea garantia? true/false"));
+        // Datos del usuario
+        String nombre = JOptionPane.showInputDialog("Ingrese nombre y apellidos:");
+        int anio = Integer.parseInt(JOptionPane.showInputDialog("Ingrese año de nacimiento:"));
+        double peso = Double.parseDouble(JOptionPane.showInputDialog("Ingrese peso en kg:"));
+        boolean garantia = Boolean.parseBoolean(JOptionPane.showInputDialog("¿Desea garantia? true/false"));
 
         int edad = calcularEdad(anio);
 
-        // IF / ELSE
+        // Validacion de edad
         if (edad >= 18) {
             System.out.println("Es mayor de edad.");
         } else {
             System.out.println("Es menor de edad.");
         }
 
-        // SWITCH
+        // Seleccion de modelo
         String opcion = JOptionPane.showInputDialog(
                 "Seleccione un modelo:\n" +
                         "1. Toyota Hilux\n" +
                         "2. Toyota Hiace\n" +
-                        "3. Kia Seltos");
+                        "3. Kia Seltos"
+        );
 
         String modelo;
-
         switch (opcion) {
             case "1":
                 modelo = "Toyota Hilux";
@@ -63,41 +51,37 @@ public class Main {
                 break;
             default:
                 modelo = "No seleccionado";
+                break;
         }
 
-        // WHILE
+        // Pedir cantidad valida
         int cantidad = 0;
-
         while (cantidad <= 0) {
-            cantidad = Integer.parseInt(
-                    JOptionPane.showInputDialog("Ingrese cantidad:"));
+            cantidad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese cantidad:"));
         }
 
-        // FOR
+        // Mostrar unidades
         System.out.println("\nUnidades:");
-
         for (int i = 1; i <= cantidad; i++) {
             System.out.println("Unidad " + i + ": " + modelo);
         }
 
-        // DO WHILE
+        // Confirmacion
         String confirmar;
-
         do {
-            confirmar = JOptionPane.showInputDialog(
-                    "¿Confirmar compra? si/no");
-        } while (!confirmar.equalsIgnoreCase("si")
-                && !confirmar.equalsIgnoreCase("no"));
+            confirmar = JOptionPane.showInputDialog("¿Confirmar compra? si/no");
+        } while (!confirmar.equalsIgnoreCase("si") && !confirmar.equalsIgnoreCase("no"));
 
         double pesoTotal = calcularPesoTotal(peso, cantidad);
 
-        System.out.println("\n= RESULTADO =");
+        // Mostrar resumen
+        System.out.println("\n=== RESULTADO DE COMPRA ===");
         System.out.println("Nombre: " + nombre);
         System.out.println("Edad: " + edad);
         System.out.println("Modelo: " + modelo);
         System.out.println("Cantidad: " + cantidad);
         System.out.println("Peso total: " + pesoTotal + " kg");
         System.out.println("Garantia: " + garantia);
-        System.out.println("Compra confirmada.");
+        System.out.println("Estado: Compra confirmada.");
     }
 }
