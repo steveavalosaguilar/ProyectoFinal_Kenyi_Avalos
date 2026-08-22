@@ -5,16 +5,17 @@ import javax.swing.JOptionPane;
 public class Main {
 
     // Metodo calcular edad
-    public int calcularEdad(int anio) {
+    public static int calcularEdad(int anio) {
         return 2026 - anio;
     }
 
     // Metodo calcular peso total
-    public double calcularPesoTotal(double peso, int cantidad) {
+    public static double calcularPesoTotal(double peso, int cantidad) {
         return peso * cantidad;
     }
 
-    public void main(String[] args) {
+    // El método main DEBE ser static
+    public static void main(String[] args) {
 
         String nombre;
         int anio;
